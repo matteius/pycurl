@@ -397,7 +397,9 @@ manually. For other SSL backends please ignore this message.''')
         pprint(os.listdir('/program files'))
         pprint("Program Files x86: ")
         pprint(os.listdir('/program files (x86)'))
-        pprint(os.listdir('/program files (x86)/Microsoft SDKs/Windows'))
+        pprint(os.listdir('/Program Files (x86)/CMake/'))
+        pprint(os.listdir('/Program Files (x86)/CMake/bin'))
+        pprint(os.listdir('/program files (x86)/Microsoft SDKs/Windows/v7.1A'))
         if not os.path.exists(curl_dir):
             fail("Curl directory does not exist: %s" % curl_dir)
         if not os.path.isdir(curl_dir):

@@ -96,7 +96,7 @@ class Config:
     # sometimes vc14 does not include windows sdk path in vcvars which breaks stuff.
     # another application for this is to supply normaliz.lib for vc9
     # which has an older version that doesn't have the symbols we need
-    windows_sdk_path = '/program files (x86)/Microsoft SDKs/windows/v7.1a'
+    windows_sdk_path = '/program files (x86)/Microsoft SDKs/windows/v7.1A'
 
 # ***
 # No user-serviceable parts beyond this point
