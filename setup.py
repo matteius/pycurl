@@ -409,7 +409,7 @@ manually. For other SSL backends please ignore this message.''')
         # For libcurl 7.46.0, the library name is libcurl.lib.
         # And static library name is libcurl_a.lib by default as of libcurl 7.46.0.
         # override with: --libcurl-lib-name=libcurl_imp.lib
-        curl_lib_name = scan_argv(self.argv, '--libcurl-lib-name=', 'libcurl.lib')
+        curl_lib_name = scan_argv(self.argv, '--libcurl-lib-name=', 'libcurl-4.dll')
 
         # openssl 1.1.0 changed its library names
         # from libeay32.lib/ssleay32.lib to libcrypto.lib/libssl.lib.
@@ -421,12 +421,12 @@ manually. For other SSL backends please ignore this message.''')
             self.extra_link_args.append(lib)
 
         libcurl_lib_path = curl_dir
-        if scan_argv(self.argv, "--use-libcurl-dll") is not None:
-            #libcurl_lib_path = "%s/%s/" % (curl_dir, curl_lib_name)
-            self.extra_link_args.extend(["ws2_32.lib"])
-            if str.find(sys.version, "MSC") >= 0:
-                # build a dll
-                self.extra_compile_args.append("-MD")
+        #if scan_argv(self.argv, "--use-libcurl-dll") is not None:
+        #libcurl_lib_path = "%s/%s/" % (curl_dir, curl_lib_name)
+        self.extra_link_args.extend(["ws2_32.lib"])
+        if str.find(sys.version, "MSC") >= 0:
+            # build a dll
+            self.extra_compile_args.append("-MD")
         else:
             self.extra_compile_args.append("-DCURL_STATICLIB")
         self.extra_link_args.extend(["gdi32.lib", "wldap32.lib", "winmm.lib", "ws2_32.lib",])
