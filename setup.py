@@ -391,10 +391,10 @@ manually. For other SSL backends please ignore this message.''')
         #curl_dir = scan_argv(self.argv, "--curl-dir=")
         #if curl_dir is None:
         #    fail("Please specify --curl-dir=/path/to/built/libcurl")
-        curl_dir = '/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/bin'
+        curl_dir = '/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin'
         from pprint import pprint
         pprint(os.listdir('/mingw-w64/'))
-        pprint(os.listdir('/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0'))
+        pprint(os.listdir('/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64'))
         pprint("cygwin64: ")
         pprint(os.listdir('/cygwin64'))
         pprint("Program Files: ")
