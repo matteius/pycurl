@@ -30,7 +30,8 @@
 # endif
 #endif
 
-#include <curl/curl.h>
+#include "curl.h"
+
 #include <curl/easy.h>
 #include <curl/multi.h>
 #undef NDEBUG

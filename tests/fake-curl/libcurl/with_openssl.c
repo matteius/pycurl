@@ -1,4 +1,5 @@
-#include <curl/curl.h>
+#include "curl.h"
+
 
 static const char *protocols[] = {
 };
