@@ -39,9 +39,9 @@ SOURCES = src/easy.c src/easycb.c src/easyinfo.c src/easyopt.c src/easyperform.c
 	src/module.c src/multi.c src/oscompat.c src/pythoncompat.c \
 	src/share.c src/stringcompat.c src/threadsupport.c src/util.c
 
-GEN_SOURCES = src/docstrings.c src/docstrings.h
+#GEN_SOURCES = src/docstrings.c src/docstrings.h
 
-ALL_SOURCES = src/pycurl.h $(GEN_SOURCES) $(SOURCES)
+ALL_SOURCES = src/pycurl.h $(SOURCES)
 
 RELEASE_SOURCES = src/allpycurl.c
 
