@@ -388,9 +388,10 @@ manually. For other SSL backends please ignore this message.''')
     def configure_windows(self):
         # Windows users have to pass --curl-dir parameter to specify path
         # to libcurl, because there is no curl-config on windows at all.
-        curl_dir = scan_argv(self.argv, "--curl-dir=")
-        if curl_dir is None:
-            fail("Please specify --curl-dir=/path/to/built/libcurl")
+        #curl_dir = scan_argv(self.argv, "--curl-dir=")
+        #if curl_dir is None:
+        #    fail("Please specify --curl-dir=/path/to/built/libcurl")
+        curl_dir = '/c/Program Files/Git/mingw64/bin'
         if not os.path.exists(curl_dir):
             fail("Curl directory does not exist: %s" % curl_dir)
         if not os.path.isdir(curl_dir):
