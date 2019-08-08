@@ -414,19 +414,20 @@ manually. For other SSL backends please ignore this message.''')
         for lib in scan_argvs(self.argv, '--link-arg='):
             self.extra_link_args.append(lib)
 
+        libcurl_lib_path = curl_dir
         if scan_argv(self.argv, "--use-libcurl-dll") is not None:
-            libcurl_lib_path = os.path.join(curl_dir, "lib", curl_lib_name)
+            #libcurl_lib_path = "%s/%s/" % (curl_dir, curl_lib_name)
             self.extra_link_args.extend(["ws2_32.lib"])
             if str.find(sys.version, "MSC") >= 0:
                 # build a dll
                 self.extra_compile_args.append("-MD")
         else:
             self.extra_compile_args.append("-DCURL_STATICLIB")
-            libcurl_lib_path = os.path.join(curl_dir, "lib", curl_lib_name)
-            self.extra_link_args.extend(["gdi32.lib", "wldap32.lib", "winmm.lib", "ws2_32.lib",])
+        self.extra_link_args.extend(["gdi32.lib", "wldap32.lib", "winmm.lib", "ws2_32.lib",])
 
         if not os.path.exists(libcurl_lib_path):
             fail("libcurl.lib does not exist at %s.\nCurl directory must point to compiled libcurl (bin/include/lib subdirectories): %s" %(libcurl_lib_path, curl_dir))
+        libcurl_lib_path = "%s/%s" % (curl_dir, curl_lib_name)
         self.extra_objects.append(libcurl_lib_path)
 
         if scan_argv(self.argv, '--with-openssl') is not None or scan_argv(self.argv, '--with-ssl') is not None:
@@ -440,18 +441,6 @@ manually. For other SSL backends please ignore this message.''')
         # vista or above, thus said binary won't work on xp.
         # https://curl.haxx.se/mail/curlpython-2013-12/0007.html
         self.extra_compile_args.append("-D_WIN32_WINNT=0x0501")
-
-        if str.find(sys.version, "MSC") >= 0:
-            self.extra_compile_args.append("-O2")
-            self.extra_compile_args.append("-GF")        # enable read-only string pooling
-            self.extra_compile_args.append("-WX")        # treat warnings as errors
-            p = subprocess.Popen(['cl.exe'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            out, err = p.communicate()
-            match = re.search(r'Version (\d+)', err.decode().split("\n")[0])
-            if match and int(match.group(1)) < 16:
-                # option removed in vs 2010:
-                # connect.microsoft.com/VisualStudio/feedback/details/475896/link-fatal-error-lnk1117-syntax-error-in-option-opt-nowin98/
-                self.extra_link_args.append("/opt:nowin98")  # use small section alignment
 
     if sys.platform == "win32":
         configure = configure_windows
@@ -955,6 +944,9 @@ if __name__ == "__main__":
             split_extension_source = True
         ext = get_extension(sys.argv, split_extension_source=split_extension_source)
         setup_args['ext_modules'] = [ext]
+        from pprint import pprint
+        pprint(ext)
+        pprint(ext.extra_objects)
 
         for o in ext.extra_objects:
             assert os.path.isfile(o), o
