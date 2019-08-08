@@ -32,8 +32,10 @@
 
 #include "curl.h"
 
-#include <curl/easy.h>
-#include <curl/multi.h>
+#include "easy.h"
+
+#include multi.h"
+
 #undef NDEBUG
 #include <assert.h>
 
