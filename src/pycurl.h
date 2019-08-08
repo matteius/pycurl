@@ -33,7 +33,7 @@
 
 #include "easy.h"
 
-#include multi.h"
+#include "multi.h"
 
 #undef NDEBUG
 #include <assert.h>
