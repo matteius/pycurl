@@ -392,6 +392,13 @@ manually. For other SSL backends please ignore this message.''')
         #if curl_dir is None:
         #    fail("Please specify --curl-dir=/path/to/built/libcurl")
         curl_dir = '/c/Program Files/Git/mingw64/bin'
+        from pprint import pprint
+        pprint(os.listdir('/'))
+        pprint(os.listdir('/c/'))
+        pprint(os.listdir('/c/Program Files/'))
+        pprint(os.listdir('/c/Program Files/Git/'))
+        pprint(os.listdir('/c/Program Files/Git/ming64'))
+        pprint(os.listdir('/c/Program Files/Git/ming64/bin'))
         if not os.path.exists(curl_dir):
             fail("Curl directory does not exist: %s" % curl_dir)
         if not os.path.isdir(curl_dir):
