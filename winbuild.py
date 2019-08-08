@@ -40,8 +40,8 @@ class Config:
     # where msysgit is installed
     git_root = 'c:/program files/git'
     msysgit_bin_paths = [
-        "c:\\Program Files\\Git\\bin",
-        "c:\\Program Files\\Git\\usr\\bin",
+        "/Program Files/Git/bin",
+        "/Program Files/Git/usr/bin",
         #"c:\\Program Files\\Git\\mingw64\\bin",
     ]
     # where NASM is installed, for building OpenSSL
@@ -96,7 +96,7 @@ class Config:
     # sometimes vc14 does not include windows sdk path in vcvars which breaks stuff.
     # another application for this is to supply normaliz.lib for vc9
     # which has an older version that doesn't have the symbols we need
-    windows_sdk_path = 'c:\\program files (x86)\\microsoft sdks\\windows\\v7.1a'
+    windows_sdk_path = '/program files (x86)/Microsoft SDKs/windows/v7.1a'
 
 # ***
 # No user-serviceable parts beyond this point
