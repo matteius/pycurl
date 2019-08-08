@@ -4,8 +4,6 @@
 /build
 /dist
 /src/allpycurl.c
-/src/docstrings.c
-/src/docstrings.h
 /tests/tmp
 /tests/fake-curl/libcurl/*.so
 /www/htdocs/download/*.bz2
